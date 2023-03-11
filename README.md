@@ -38,7 +38,7 @@ can edit your file manually on my end, and immediately remedy the conflicts and 
 11. I'll continue this list and expand on these points once we get close to this phase. Stay tuned. 
 
 
-### How do you get this file on your computer?
+### How do I get these files onto my computer?
 Well, you'll need to **fork** this repo. More on this soon. 
 
 After you've forked your repo, "clone" it onto your local machine. 
