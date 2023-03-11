@@ -13,10 +13,7 @@ Here's my working list of participants:
 Fix (only) your name for me. Thanks. :)
 
 ### How do I contribute to your project?
-##### 1. Fork this repo
-Forking this repo is like `git clone`, but It creates the "clone" in a 
-*remote* location (on GitHub) that you can use as (one of) your "upstream" 
-locations. 
+
 1. Fork
 2. `git clone`
 3. Make changes locally
@@ -37,9 +34,18 @@ to work on some stuff locally before merging your repo into mine, or maybe I (th
 can edit your file manually on my end, and immediately remedy the conflicts and such. 
 11. I'll continue this list and expand on these points once we get close to this phase. Stay tuned. 
 
+##### 1. Fork this repo
+Forking this repo is like `git clone`, but It creates the "clone" in a 
+*remote* location (on GitHub) that you can use as (one of) your "upstream" 
+locations. 
 
-### How do I get these files onto my computer?
-Well, you'll need to **fork** this repo. More on this soon. 
+From the Home Page of the Project (the one with ScumbagScalawag/Git-Gud
+in the top left, go ahead and click the button
+that's says "Fork". Go through this dialog and set it up with all its defaults for now. 
+You can even change the name of your fork, but it might be best to leave it as-is in most 
+cases. 
+
+##### 2. Git Clone: How do I get these files onto my computer?
 
 After you've forked your repo, "clone" it onto your local machine. 
 Go ahead and run 
@@ -47,7 +53,7 @@ Go ahead and run
 git clone https://github.com/<Your username and Repo here> 
 ``` 
 in your terminal. 
-For me (and this GitHub project, this is what **I** run: 
+For me (and this GitHub project) this is what **I** run: 
 ```bash
 git clone https://github.com/ScumbagScalawag/Git-Gud
 ``` 
@@ -55,13 +61,18 @@ git clone https://github.com/ScumbagScalawag/Git-Gud
 
 **You'll `git clone...` *your* repo!**
 
-This will put a `Git-Gud` folder in the place you run `git clone...`. If you want 
-this project to be located in your `/home/nmcivor/Documents/coding-programming` folder, 
-navigate to that folder, and run the `git clone` command. 
+This will put a `Git-Gud` folder in the place you run `git clone...` (so long as you
+didn't re-name the project of your fork). 
+
+If you want 
+this project to be located in your `/home/yourlocalusername/Documents/coding-programming` folder, 
+navigate to that folder, and run the `git clone...` command. 
 
 This command essentially downloads the stuff on the cloud to your local computer.
+
 It does this, while also letting your computer know that this is indeed a `git` project,
 which means you can run any `git ...` command and the `.gitignore` and `.git` files 
 are included in your working directory. 
 
 I'll let you guys do the git clone thing, and figure out how you get stuff locally. 
+I'll add more on how you commit, leave commit messages, merge, and do Pull Requests later.  
