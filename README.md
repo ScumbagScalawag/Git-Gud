@@ -91,15 +91,15 @@ pivot into working with a team.
 
 Essentially: welcome to your sandbox. Your sandbox will grow.  
 
-<a name="clone"></a>
+<a name="local"></a>
 ### 3. Making changes locally (Committing)
 *hint: "local" means on your personal computer, and "remote" refers to a cloud server
 or a code hosting tool (in this case, GitHub, but there are others that exist)*
 
-<a name="clone"></a>
+<a name="committing"></a>
 ### 4. Making Commits
 
-<a name="clone"></a>
+<a name="pulling"></a>
 ### 5. Pulling from Upstream 
 "Upstream" referes to the remote location thats hosting your code.
 In our case, "upstream" is either your forked repo, or my repo. 
@@ -128,5 +128,11 @@ your repo correctly.
     main pushes to main (up to date)
 ```
 
-I'll talk more about pushing, pulling, fetching, and merging 
-in a separte section. 
+Pulling is actually a compound operation. Essentially:
+
+pull = fetch + merge
+
+<a name="fetching"></a>
+#### Fetching
+
+More soon. 
