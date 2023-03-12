@@ -34,7 +34,7 @@ everything on your own machine and your own GitHub project (the remote).
 
 8. [Do a pull request (often balled a PR)](#pr)
 9. This stage is where we might hop on a call or be active in chat to discuss your changes. 
-Sometimes PR's are trivial, but sometimes they requre deep discussion about what direction
+Sometimes PR's are trivial, but sometimes they require deep discussion about what direction
 the project is going, what needs work, what needs patches, and what features need to be added
 or removed. 
 10. Next, I (the repo maintainer) will either deny or accept these changes. This could mean you have
@@ -74,7 +74,7 @@ git clone https://github.com/ScumbagScalawag/Git-Gud
 **You'll `git clone...` *your* repo!**
 
 This will put a `Git-Gud` folder in the place you run `git clone...`.
-That is, unless youu didn't re-name the project of your fork, in which case
+That is, unless you didn't re-name the project of your fork, in which case
 it would display that name. Makes sense.  
 
 If you want this project to be located in your `/home/yourlocalusername/Documents/coding-programming` folder, 
@@ -131,7 +131,7 @@ Pulling is actually a compound operation. Essentially:
 
 But let's not get ahead of ourselves. 
 
-"Upstream" referes to the remote location that's hosting your code.
+"Upstream" refers to the remote location that's hosting your code.
 In our case, "upstream" is either your forked repo, or my repo. 
 It depends on which one you ran `git clone` on. 
 You can set your upstream manually though.
@@ -242,7 +242,7 @@ I run `git remote show origin`.
     master pushes to master (up to date)
 ```
 
-This setup is not managable, because I don't have permission to replace their code.
+This setup is not manageable, because I don't have permission to replace their code.
 Makes sense. I'll need to set *my* upstream push location to be *my* forked repo,
 and [send pull requests](#pr) to this person for them to potentially incorporate
 my changes. 
@@ -267,7 +267,7 @@ In our case, you'll have to make sure you correctly set your upstream locations.
     2. Switch over to main: `git checkout main`
     3. Pull(#pull) from origin: `git pull origin main`. 
     Theoretically, you haven't touched the "main"
-    branch, so any conflicts that arrise from comparing your "main" branch with the remote ("origin main")
+    branch, so any conflicts that arise from comparing your "main" branch with the remote ("origin main")
     should completely exclude your additional features. 
     4. While you're in "main", run `git merge branch-with-new-features`.
         1. You'll need to resolve these conflicts now. This usually requires some communication with
