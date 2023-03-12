@@ -12,6 +12,10 @@ Here's my working list of participants:
 
 Fix (only) your name for me. Thanks. :)
 
+## Some Nuances as You Read
+- The terms "master" and "main" are used synonymously to refer to the primary branch
+that all features are merged into. **This branch should not be actively worked in.**
+
 # How do I contribute to your project?
 Here's a high-level overview: 
 
@@ -35,7 +39,7 @@ the project is going, what need work, what needs patches, and what features need
 or removed. 
 10. Next, I (the repo maintainer) will either deny or accept these changes. This could mean you have
 to work on some stuff locally before merging your repo into mine, or maybe I (the maintainer) 
-can edit your file manually on my end, and immediately remedy the conflicts and such. 
+can edit your file manually on my end, and immediately remedy the conflicts and merge.
 11. [I'll continue this list and expand on these points once we get close to this phase. Stay tuned.]
 
 <a name="fork"></a>
@@ -55,13 +59,13 @@ cases.
 After you've forked **your** repo, "clone" it onto your local machine. 
 Go ahead and run in your terminal. 
 
-```
+```bash
 git clone https://github.com/Your-username-and-Repo-here
 ```
 
 For me (and this GitHub project) this is what **I** run: 
 
-```
+```bash
 git clone https://github.com/ScumbagScalawag/Git-Gud
 ```
 
@@ -80,11 +84,12 @@ This command essentially downloads the stuff on the cloud to your local computer
 
 It does this, while also letting your computer know that this is indeed a `git` project,
 which means you can run any `git ...` command. The `.gitignore` and `.git` files 
-are included in your working directory. 
+are then included in your working directory.  
 
 I'll let you guys do the git clone thing, and figure out how you get stuff locally. 
 I'll add more on how you commit, leave commit messages, merge, and do Pull Requests later.  
 
+I'm showing you all this stuff in a particular order.
 The Idea behind me setting you up on your local machines first, is so that you can now practice
 making local commits, local merges, and all that fun stuff in an environment that I can easily
 pivot into working with a team. 
@@ -97,7 +102,26 @@ Essentially: welcome to your sandbox. Your sandbox will grow.
 or a code hosting tool (in this case, GitHub, but there are others that exist)*
 
 <a name="commit"></a>
-### 4. Making Commits (#commit)
+### 4. Making Commits 
+Commits are just you saving your project (akin to `ctrl`+`s`). 
+
+```bash
+git commit -m "Your commit message"
+```
+
+`-m` for "message". 
+
+Commits should be done frequently. They should be made when you've made any kind of milestone 
+like making a new function, figuring out a bug, adding some new objects, or anything else you 
+think is significant. More is more in this case. 
+
+Make them as descriptive and concise as possible.
+
+If you run into weird behavior, make sure you've committed your changes in your
+feature branch and see if that fixes it.
+Sometimes I forget to commit my local feature branch changes before I "merge my changes", 
+only to arrive to the file whose contents should have changed in my other branch and be
+disappointed and confused. 
 
 <a name="pull"></a>
 ### 5. Pulling from Upstream 
@@ -114,14 +138,14 @@ You can set your upstream manually though.
 Before we do that, lets take a look at what your upstream is right now.
 Run this: 
 
-```
+```bash
 git remote show origin
 ```
 
 You should see something like this if you've [forked](#fork) and [cloned](#clone) 
 your repo correctly:
 
-```
+```bash
 * remote origin
   Fetch URL: https://github.com/ScumbagScalawag/Git-Gud
   Push  URL: https://github.com/ScumbagScalawag/Git-Gud
@@ -135,8 +159,12 @@ your repo correctly:
 ```
 
 The main difference between this output and yours is your URL will be the URL
-location of *your* project. This (unsurprisingly) is true for any project that exists
+location of ***your*** project. This (unsurprisingly) is true for any project that exists
 on your repo, and that you've "cloned" onto your local machine. 
+
+Ok cool, but you'll need to [pull](#pull) from ***my*** repo to get the latest changes. 
+Remember, everyone has their own fork, and they're all doing what your doing, and then 
+having their changes added. That said, you'll still need to keep your 
 
 #### Setting Upstream Location(s) 
 The following one-liner sets your upstream (of the branch you
@@ -145,7 +173,7 @@ run this command in) to:
 2. Whatever branch is listed after the location (which is a branch in
 that repo)
 
-```
+```bash
 git set upstream origin main
 ```
 
@@ -164,7 +192,7 @@ You ideally would never really touch the master branch.
 To show this, take a look at [this repos](https://github.com/johannesjo/super-productivity) branches when
 I run `git remote show origin`. 
 
-```
+```bash
 * remote origin
   Fetch URL: https://github.com/johannesjo/super-productivity
   Push  URL: https://github.com/johannesjo/super-productivity
@@ -224,25 +252,64 @@ with the team. Nice. Grab some Tea. Good work.
 Now, before you push your code, you'll need to make sure you account for anything
 that has changed since the commit that your changes diverged from the remote (origin).
 
-5. Account for changes in "origin master" (the remote location for your project):
-    1. Make sure you've made a commit at this point. There's nuance as to when you might *not* want to commit
-    at this point, but, just... okay? 
+5. Account for changes in "origin main" (the remote location for your project). 
+In our case, you'll have to make sure you correctly set your upstream locations. 
+    1. Make sure you've made a commit in your feature branch at this point. 
+    There's nuance as to when you might *not* want to commit at this point, but, just... okay? 
     2. Switch over to main: `git checkout main`
-    3. Pull(#pull) from 
+    3. Pull(#pull) from origin: `git pull origin main`. 
+    Theoretically, you haven't touched the "main"
+    branch, so any conflicts that arrise from comparing your "main" branch with the remote ("origin main")
+    should completely exclude your additional features. 
+    4. While you're in "main", run `git merge branch-with-new-features`.
+        1. You'll need to resolve these conflicts now. This usually requires some communication with
+        your team to make sure you're not stepping on anyone's toes. 
+6. [Push](#push) these changes to ***your*** remote repo.
 
-change in other-branch
-
-Another change in other branch. Wow. You're really good at programming!
-
-Ok, here's a third addition in other-branch
 
 <a name="fetch"></a>
 #### Fetching 
 
 
-
 <a name="merge"></a>
 #### Merging 
+Merging branches sounds kinda like what it is. 
+When branch B is merged **into** branch A, that means there are features in branch B
+that you'd like branch A to have. 
 
+Lets merge `branch-b` into `branch-a`. Remember: this has to be done within `branch-a`,
+which is the destination branch. 
+
+*moving to `branch-a`:*
+
+```bash
+git checkout branch-a
+```
+
+*merging `branch-b` into `branch-a`*
+```bash
+git merge branch-b
+```
+
+Merge conflicts happen. Thats ok. They look like this:
+
+```
+<<<<<<< HEAD
+Some content in A. 
+Um uh...
+Like uh.. 
+ok so here's some more content in A.
+You get the idea. 
+=======
+Some content in B. 
+Much more concise. 
+>>>>>>> commit-hash-for-branch-B
+``````
+
+The `=======` divides the content in `branch-a` (on the top),
+and the content in `branch-b` (on the bottom).
+
+Remember, `branch-a` is the branch you're in, and `branch-b` is the branch 
+whose content you want to include. 
 
 More soon. 
