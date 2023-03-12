@@ -36,7 +36,7 @@ I'm glad you asked. Here's a high-level overview (with links!):
 3. You can optionally do step 6 at this point. Continue with step 4 if you want to get started working right away
 and deal with the GitHub side of things later. 
 4. [Create a new branch](#branch) locally and navigate to it or navigate to the appropriate existing branch
-5. Make changes locally in this branch and [commit](#commit) along the way. 
+5. Make changes locally: in this branch and [commit](#commit) along the way. 
 
 Pause. Ok so you've done all your changes locally and your ready to share your code
 with the team. Nice. Grab some Tea. Good work. 
@@ -46,8 +46,7 @@ that has changed in **my** repo since you've started working.
 6. [Set your upstream location(s)](#upstream) 
     - [Method 1](#m1)
     - [Method 2](#m2)
-7. Account for changes in "origin main" (the remote location for your project). 
-In our case, you'll have to make sure you correctly set your upstream locations. 
+7. [Pulling from Upstream](#pull): account for changes in the project since you've started your feature.
     1. Make sure you've made a commit in your feature branch at this point. 
     There's nuance as to when you might *not* want to commit at this point, but, just... okay? 
     2. Switch over to main: `git checkout main`
@@ -65,7 +64,7 @@ Then comes the actual contribution to **my** project. Up to this point, you've b
 10. Profit.
 
 <a name="fork"></a>
-### 1. Fork this repo
+## 1. Fork this repo
 Forking this repo is like `git clone`, but it creates the "clone" in a 
 *remote* location (on GitHub) that you can use as (one of) your "upstream" 
 locations. More on upstream locations [here](#upstream). 
@@ -77,7 +76,7 @@ You can even change the name of your fork, but it might be best to leave
 it as-is in most cases. 
 
 <a name="clone"></a>
-### 2. How do I get these files onto my computer? (spoiler: `git clone`)
+## 2. How do I get these files onto my computer? (spoiler: `git clone`)
 After you've forked **your** repo, "clone" it onto your local machine. 
 Go ahead and run in your terminal. 
 
@@ -118,12 +117,12 @@ j
 Essentially: welcome to your sandbox. Your sandbox will grow.  
 
 
-### 3. To Upstream or Not to Upstream
+## 3. To Upstream or Not to Upstream
 You can optionally do [step 6](#step-six) at this point. Continue with step 4 if you want to get started working right away
 and deal with the GitHub side of things later.
 
 <a name="branch"></a>
-### 4. Creating Branches
+## 4. Creating Branches
 Making a branch means you create a copy of the branch you're on. 
 The original branch will be unaffected by changes in your new branch until you [merge](#merge)
 the new branch into your main branch. 
@@ -143,7 +142,7 @@ git checkout -b new-branch
 ```
 
 <a name="commit"></a>
-### 5. Making Changes Locally: Committing and Merging
+## 5. Making Changes Locally: Committing and Merging
 Along the way, you'll need to commit things. Committing is like saving
 Commits are just you saving your project (akin to `ctrl`+`s`), but you can revert 
 *all* your files in your project back to different commits in case you do something 
@@ -213,15 +212,39 @@ Remember, `branch-a` is the branch you're in, and `branch-b` is the branch
 whose content you want to include. New stuff is on the bottom. 
 
 <a name="upstream"></a>
-#### 6. Setting Upstream Location(s) 
+## 6. Setting Upstream Location(s) 
 TLDR: use either method:
 [Method 1](#m1): `git remote set-url --pull origin`
 [Method 2](#m2): `git remote add`
 
-
-
-Before you get any funny ideas of pulling and pushing to a remote repo, lets
+Before you get any funny ideas of pulling from and pushing to a remote repo, lets
 make sure you've got it set up correctly. 
+
+You should see something like this if you've [forked](#fork) and [cloned](#clone) 
+your repo as I've listed it in these instructions.
+
+```
+git remote -v
+```
+
+*Note: in the CLI, `-v` often mean `--verbose`*
+
+This outputs:
+
+```
+origin  https://github.com/YourUsernameHere/Git-Gud (fetch)
+origin  https://github.com/YourUsernameHere/Git-Gud (push)
+```
+
+*note: pull = fetch + merge, so just consider "fetch" to be the location
+your getting updates from. Your fork (for the sake of this project) remains unchanged.
+More on this [here](#pull)*
+
+Ok cool, but you'll need to [pull](#pull) from ***my*** repo to get the latest changes. 
+Remember, everyone has their own fork, and they're all doing what your doing, and then 
+having their changes added. That said, you'll still need to keep your Fetch URL as **mine**, 
+because you'll always want to be getting the most up-to-date version of the codebase. 
+You don't need any special permissions to pull. You can pull all the livelong. 
 
 There are two main ways I set upstream location(s). 
 
@@ -281,12 +304,18 @@ Let's call it "upstream".
 git remote add upstream https://github.com/ScumbagScalawag/Git-Gud
 ```
 
-Remember, you can check your upstream locations with `git remote -v`. 
+Remember, you can check your upstream locations with `git remote -v`.
+Yours should look like this if you're going the Method 2 route: 
+
+```
+origin  https://github.com/YourUsernameHere/Git-Gud (fetch)
+origin  https://github.com/YourUsernameHere/Git-Gud (push)
+upstream  https://github.com/ScumbagScalawag/Git-Gud (fetch)
+upstream  https://github.com/ScumbagScalawag/Git-Gud (push)
+```
 
 <a name="pull"></a>
-### 7. Pulling from Upstream 
-TLDR: Pull from my repo and push to your repo. Skip to []
-
+## 7. Pulling from Upstream 
 Theoretically, you haven't touched the "main"
 branch, so any conflicts that arrise from comparing your "main" branch with the remote ("origin main")
 should completely *exclude* your additional features. 
@@ -297,50 +326,22 @@ Pulling is actually a compound operation. Essentially:
 
 But let's not get ahead of ourselves. 
 
-Before we pull anything, lets take a look at what your upstream is right now.
-Run this: 
-
-```
-git remote -v
-```
-
-*Note: in the CLI, `-v` often mean `--verbose`*
-
-You should see something like this if you've [forked](#fork) and [cloned](#clone) 
-your repo correctly:
-
-```
-origin  https://github.com/ScumbagScalawag/Git-Gud (fetch)
-origin  https://github.com/ScumbagScalawag/Git-Gud (push)
-```
-
-The main difference between this output and yours is your URL will be the URL
-location of ***your*** project for both fetch/pull and push. 
-This (unsurprisingly) is true for any project that exists
-on your repo, and that you've "cloned" onto your local machine. 
-
-Ok cool, but you'll need to [pull](#pull) from ***my*** repo to get the latest changes. 
-Remember, everyone has their own fork, and they're all doing what your doing, and then 
-having their changes added. That said, you'll still need to keep your Fetch URL as **mine**, 
-because you'll always want to be getting the most up-to-date version of the codebase. 
-You don't need any special permissions to pull. You can pull all the livelong. 
-
-### Whose Repo Is it Anyway? 
+### Whose Repo Is it Anyway? More on Upstream and Best Practices
 If you've cloned ***my*** repo, your "origin" is automatically set to the URL
-of ***my*** repo, which is the one listed in the command above.
+of ***my*** repo.
 
-If you've cloned one of ***your*** repos, it will show the URL of your repo's homepage
-(i.e. where the README.md is displayed). Makes sense. 
+If you've [cloned](#clone) one of ***your*** repos, `git remote -v` will show the URL of your repo's homepage
+(i.e. where the README.md is displayed) for fetching and pushing. Makes sense. 
 
-#### Some Context: Whats the Point of Setting Upstream? 
-Skip [here](#upstream) to just set it up. 
+#### Some Context: Working in Different Branches
+TLDR: Work in other branches -> merge to main.
 
 In a real-world production environment, you do all your work on local branches, pull from 
 the repo everyone else is sending their work to in order to get the most up-to-date codebase, 
 [merge](#merge) your changes into this updated code, push to your local repo, then send 
 [pull requests](#pr) to have your work included in that "shared" repo. 
 
-You ideally would never really touch the master branch, but for now we're just gonna merge master. 
+You ideally would never really actively work in the master branch, but for now we're just gonna merge master. 
 
 To show this, take a look at [this repos](https://github.com/johannesjo/super-productivity) branches when
 I run `git remote show origin`, which shows me the URL locations for push and pull and the branches that exist
@@ -397,18 +398,23 @@ This setup is not managable, because I don't have permission to replace their co
 Makes sense. To contribute to their project, I'll need to set *my* upstream push 
 location to be **my forked repo** (with [Method 1](#m1)) or add a new remote location (with
 [Method 2](#m2)) and [send pull requests](#pr) to this person for them to potentially incorporate
-
+my changes.
 
 <a name="fetch"></a>
-#### Fetching 
+## Fetching 
 
 <a name="pr"></a>
 ## 10. Pull Requests - How Your Code is Added to My Code
+**Why's it called a pull request?**
+It's called that becase it is a request by you (a contributor) to have me (the maintainer)
+pull your changes/additions/features into my project. 
+Remember: [pull = fetch + merge]. So by sending a pull request, you're asking me to download 
+(fetch) your changes, and merge them into my project. 
 
 Make sure you've done all the steps 1-9 before you do a PR. 
 
-Make sure your feature branch was correctly merged into the main branch 
-with no errors or remaining merge conflicts locally before you initiate a PR. 
+Make sure your feature branch was correctly merged into the main branch in its most
+current state with no errors or remaining merge conflicts locally before you initiate a PR. 
 
 This stage is where we might hop on a call or be active in chat to discuss your changes. 
 Sometimes PR's are trivial, but sometimes they requre deep discussion about what direction
@@ -417,6 +423,6 @@ or removed.
 
 Next, I (the repo maintainer) will either deny or accept these changes. This could mean you have
 to work on some stuff locally before merging your repo into mine, or maybe I (the maintainer) 
-can edit your file manually on my end, and immediately remedy the conflicts and merge.
+can edit your file manually on my end and immediately remedy the conflicts and merge.
 
 More soon. 
