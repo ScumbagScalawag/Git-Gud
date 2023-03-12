@@ -225,7 +225,7 @@ Now, before you push your code, you'll need to make sure you account for anythin
 that has changed since the commit that your changes diverged from the remote (origin).
 
 5. Account for changes in "origin master" (the remote location for your project):
-    1. Make sure you commit at this point. There's nuance as to when you might *not* want to commit
+    1. Make sure you've made a commit at this point. There's nuance as to when you might *not* want to commit
     at this point, but, just... okay? 
     2. Switch over to main: `git checkout main`
     3. Pull(#pull) from 
