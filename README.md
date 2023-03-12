@@ -26,6 +26,8 @@ Here's a high-level overview:
 5. [Pull from *my* upstream (to make sure you you are up to date with whats upstream, or
 in the cloud)](#pull)
     - [Setting Your Upstream(s)](#upstream)
+        - [Method 1](#m1)
+        - [Method 2](#m2)
 6. [Remedy merge conflicts locally](#merge-conflicts)
 7. [Push your changes to *your* forked repo.](#pushing)
 
@@ -49,10 +51,10 @@ Forking this repo is like `git clone`, but it creates the "clone" in a
 locations. More on upstream locations in a later section. 
 
 From the Home Page of the Project (the one with ScumbagScalawag/Git-Gud
-in the top left, go ahead and click the button
-that's says "Fork". Go through this dialog and set it up with all its defaults for now. 
-You can even change the name of your fork, but it might be best to leave it as-is in most 
-cases. 
+in the top left) go ahead and click the button that says "Fork". 
+Go through this dialog and set it up with all its defaults for now. 
+You can even change the name of your fork, but it might be best to leave 
+it as-is in most cases. 
 
 <a name="clone"></a>
 ### 2. How do I get these files onto my computer? (spoiler: `git clone`)
@@ -92,8 +94,7 @@ I'll add more on how you commit, leave commit messages, merge, and do Pull Reque
 I'm showing you all this stuff in a particular order.
 The Idea behind me setting you up on your local machines first, is so that you can now practice
 making local commits, local merges, and all that fun stuff in an environment that I can easily
-pivot into working with a team. 
-
+j
 Essentially: welcome to your sandbox. Your sandbox will grow.  
 
 <a name="local"></a>
@@ -139,58 +140,97 @@ Before we do that, lets take a look at what your upstream is right now.
 Run this: 
 
 ```
-git remote show origin
+git remote -v
 ```
+
+*Note: in the CLI, `-v` often mean `--verbose`*
 
 You should see something like this if you've [forked](#fork) and [cloned](#clone) 
 your repo correctly:
 
 ```
-* remote origin
-  Fetch URL: https://github.com/ScumbagScalawag/Git-Gud
-  Push  URL: https://github.com/ScumbagScalawag/Git-Gud
-  HEAD branch: main
-  Remote branch:
-    main tracked
-  Local branch configured for 'git pull':
-    main merges with remote main
-  Local ref configured for 'git push':
-    main pushes to main (up to date)
+origin  https://github.com/ScumbagScalawag/Git-Gud (fetch)
+origin  https://github.com/ScumbagScalawag/Git-Gud (push)
 ```
 
 The main difference between this output and yours is your URL will be the URL
-location of ***your*** project. This (unsurprisingly) is true for any project that exists
+location of ***your*** project for both fetch/pull and push. 
+This (unsurprisingly) is true for any project that exists
 on your repo, and that you've "cloned" onto your local machine. 
 
 Ok cool, but you'll need to [pull](#pull) from ***my*** repo to get the latest changes. 
 Remember, everyone has their own fork, and they're all doing what your doing, and then 
-having their changes added. That said, you'll still need to keep your 
+having their changes added. That said, you'll still need to keep your Fetch URL as **mine**, 
+because you'll always want to be getting the most up-to-date version of the codebase. 
+You don't need any special permissions to pull. You can pull all the livelong. 
 
+<a name="upstream"></a>
 #### Setting Upstream Location(s) 
-The following one-liner sets your upstream (of the branch you
-run this command in) to:
-1. Whatever repo "origin" is set to (which is a URL)
-2. Whatever branch is listed after the location (which is a branch in
-that repo)
+There are two main ways to set your upstream location(s). 
+
+<a name="m1"></a>
+##### Method 1 (No thinky thinky method)
+TLDR: `git remote set-url --pull origin`
+
+The following one-liner sets your "origin" **for pulling** to *my* repo, 
+hence the --pull option. The advantage here is that once you've set it up, you 
+can just call "origin" to refer to some remote location, and your computer (clever as it is)
+will know to **pull** from my repo and **push** to yours. 
 
 ```
-git set upstream origin main
+git remote set-url --pull origin https://github.com/ScumbagScalawag/Git-Gud
 ```
 
-I believe if you've cloned ***my*** repo, your "origin" is automatically set to the URL
-of ***my*** repo, which is 
+This setup is nice in general becuase now you don't have to worry about calling *my* repo 
+something like "upstream": you can just say `git push origin main` and `git pull origin main`
+and all the legwork is setup to **pull** from my repo and **push** to yours. 
 
-https://github.com/ScumbagScalawag/Git-Gud . 
+Before we move on, lets make sure your've done this correctly. Run this command again:
 
-If you've cloned one of *your* repos, it will show the URL of your repo's homepage
-(i.e. where the README.md is displayed).
+```
+git remote -v
+```
+
+That should now output something like this:
+
+```
+origin  https://github.com/ScumbagScalawag/Git-Gud (fetch)
+origin  https://github.com/YourUsernameHere/Git-Gud (push)
+```
+
+Notice how your pull/fetch URL has now changed. Nice. 
+
+*more on fetch [here](#fetch).*
+
+<a name="m2"></a>
+##### Method 2 (Ouch. Thinky hurt brain method)
+TLDR: `git remote add`
+
+If you'd like to keep a more finely-tuned arrangement of push and pull 
+locations, use this method. The advantage here is you have more manual control
+over where you push to and pull from for every time you do so.  
+
+To keep your "origin" tied to *your* URL for both pushing and pulling, you'll 
+need to configure a different location that represents *my* branch. Let's call
+it "upstream". 
+
+```
+git remote add upstream https://github.com/ScumbagScalawag/Git-Gud
+```
+
+###### Whose repo is it anyway? 
+If you've cloned ***my*** repo, your "origin" is automatically set to the URL
+of ***my*** repo, which is the one listed in the command above.
+
+If you've cloned one of ***your*** repos, it will show the URL of your repo's homepage
+(i.e. where the README.md is displayed). Makes sense. 
 
 #### Whats the point of Setting Upstream? 
 In a real-world production environment, you do all your work on local branches, pull from 
 the repo everyone else is sending their work to, push to your local repo, then send 
 [pull requests](#pr) to have your work included in that "shared" repo. 
 
-You ideally would never really touch the master branch. 
+You ideally would never really touch the master branch, but for now we're just gonna merge master. 
 
 To show this, take a look at [this repos](https://github.com/johannesjo/super-productivity) branches when
 I run `git remote show origin`. 
@@ -243,8 +283,9 @@ I run `git remote show origin`.
 ```
 
 This setup is not managable, because I don't have permission to replace their code.
-Makes sense. I'll need to set *my* upstream push location to be *my* forked repo,
-and [send pull requests](#pr) to this person for them to potentially incorporate
+Makes sense. To contribute to their project, I'll need to set *my* upstream push 
+location to be *my* forked repo (with [Method 1](#m1)) or add a new remote location (with
+[Method 2](#m2)) and [send pull requests](#pr) to this person for them to potentially incorporate
 my changes. 
 
 If you are a developer who wants to contribute to this project, you would: 
@@ -288,7 +329,6 @@ that you'd like branch A to have.
 
 Lets merge `branch-b` into `branch-a`. Remember: this has to be done within `branch-a`,
 which is the destination branch. 
-
 *moving to `branch-a`:*
 
 ```
