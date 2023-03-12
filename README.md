@@ -32,10 +32,10 @@ in the cloud)](#pull)
 Then comes the actual contribution to **my** project. Up to this point, you've done
 everything on your own machine and your own GitHub project (the remote). 
 
-8. [Do a pull request (often balled a PR)](#pull-request)
+8. [Do a pull request (often balled a PR)](#pr)
 9. This stage is where we might hop on a call or be active in chat to discuss your changes. 
 Sometimes PR's are trivial, but sometimes they requre deep discussion about what direction
-the project is going, what need work, what needs patches, and what features need to be added
+the project is going, what needs work, what needs patches, and what features need to be added
 or removed. 
 10. Next, I (the repo maintainer) will either deny or accept these changes. This could mean you have
 to work on some stuff locally before merging your repo into mine, or maybe I (the maintainer) 
@@ -59,13 +59,13 @@ cases.
 After you've forked **your** repo, "clone" it onto your local machine. 
 Go ahead and run in your terminal. 
 
-```bash
+```
 git clone https://github.com/Your-username-and-Repo-here
 ```
 
 For me (and this GitHub project) this is what **I** run: 
 
-```bash
+```
 git clone https://github.com/ScumbagScalawag/Git-Gud
 ```
 
@@ -105,7 +105,7 @@ or a code hosting tool (in this case, GitHub, but there are others that exist)*
 ### 4. Making Commits 
 Commits are just you saving your project (akin to `ctrl`+`s`). 
 
-```bash
+```
 git commit -m "Your commit message"
 ```
 
@@ -138,14 +138,14 @@ You can set your upstream manually though.
 Before we do that, lets take a look at what your upstream is right now.
 Run this: 
 
-```bash
+```
 git remote show origin
 ```
 
 You should see something like this if you've [forked](#fork) and [cloned](#clone) 
 your repo correctly:
 
-```bash
+```
 * remote origin
   Fetch URL: https://github.com/ScumbagScalawag/Git-Gud
   Push  URL: https://github.com/ScumbagScalawag/Git-Gud
@@ -173,7 +173,7 @@ run this command in) to:
 2. Whatever branch is listed after the location (which is a branch in
 that repo)
 
-```bash
+```
 git set upstream origin main
 ```
 
@@ -185,14 +185,17 @@ https://github.com/ScumbagScalawag/Git-Gud .
 If you've cloned one of *your* repos, it will show the URL of your repo's homepage
 (i.e. where the README.md is displayed).
 
-##### Whats the point of Setting Upstream? 
-In a real-world production environment, you do all your work on local branches. 
+#### Whats the point of Setting Upstream? 
+In a real-world production environment, you do all your work on local branches, pull from 
+the repo everyone else is sending their work to, push to your local repo, then send 
+[pull requests](#pr) to have your work included in that "shared" repo. 
+
 You ideally would never really touch the master branch. 
 
 To show this, take a look at [this repos](https://github.com/johannesjo/super-productivity) branches when
 I run `git remote show origin`. 
 
-```bash
+```
 * remote origin
   Fetch URL: https://github.com/johannesjo/super-productivity
   Push  URL: https://github.com/johannesjo/super-productivity
@@ -239,6 +242,11 @@ I run `git remote show origin`.
     master pushes to master (up to date)
 ```
 
+This setup is not managable, because I don't have permission to replace their code.
+Makes sense. I'll need to set *my* upstream push location to be *my* forked repo,
+and [send pull requests](#pr) to this person for them to potentially incorporate
+my changes. 
+
 If you are a developer who wants to contribute to this project, you would: 
 1. [Fork the repo](#fork)
 2. [Clone your forked repo](#clone)
@@ -265,6 +273,7 @@ In our case, you'll have to make sure you correctly set your upstream locations.
         1. You'll need to resolve these conflicts now. This usually requires some communication with
         your team to make sure you're not stepping on anyone's toes. 
 6. [Push](#push) these changes to ***your*** remote repo.
+7. [Create a **Pull Request**](#pr)
 
 
 <a name="fetch"></a>
@@ -282,15 +291,17 @@ which is the destination branch.
 
 *moving to `branch-a`:*
 
-```bash
+```
 git checkout branch-a
 ```
 
 *merging `branch-b` into `branch-a`*
-```bash
+```
 git merge branch-b
 ```
 
+<a name="merge-conflicts"></a>
+##### Merge Conflicts 
 Merge conflicts happen. Thats ok. They look like this:
 
 ```
