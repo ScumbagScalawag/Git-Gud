@@ -234,6 +234,8 @@ change in other-branch
 
 Another change in other branch. Wow. You're really good at programming!
 
+Ok, here's a third addition in other-branch
+
 <a name="fetch"></a>
 #### Fetching 
 
