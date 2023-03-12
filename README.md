@@ -193,16 +193,13 @@ git merge branch-b
 Merge conflicts happen. Thats ok. They look like this:
 
 ```
-<<<<<<< HEAD
 Some content in A. 
 Um uh...
 Like uh.. 
 ok so here's some more content in A.
 You get the idea. 
-=======
 Some content in B. 
 Much more concise. 
->>>>>>> commit-hash-for-branch-B
 ``````
 
 The `=======` divides the content in `branch-a` (on the top),
