@@ -12,15 +12,15 @@ Here's my working list of participants:
 
 Fix (only) your name for me. Thanks. :)
 
-## How do I contribute to your project?
+# How do I contribute to your project?
 Here's a high-level overview: 
 
 1. [Fork this repo](#fork)
-2. [Clone this repo (`git clone`)](#clone)
+2. [Clone your fork (`git clone`)](#clone)
 3. [Make changes locally](#local)
-4. [Commit those changes locally](#committing)
+4. [Commit those changes locally](#commit)
 5. [Pull from *my* upstream (to make sure you you are up to date with whats upstream, or
-in the cloud)](#pulling)
+in the cloud)](#pull)
     - [Setting Your Upstream(s)](#upstream)
 6. [Remedy merge conflicts locally](#merge-conflicts)
 7. [Push your changes to *your* forked repo.](#pushing)
@@ -52,7 +52,7 @@ cases.
 
 <a name="clone"></a>
 ### 2. How do I get these files onto my computer? (spoiler: `git clone`)
-After you've forked my repo, "clone" it onto your local machine. 
+After you've forked **your** repo, "clone" it onto your local machine. 
 Go ahead and run in your terminal. 
 
 ```
@@ -96,12 +96,18 @@ Essentially: welcome to your sandbox. Your sandbox will grow.
 *hint: "local" means on your personal computer, and "remote" refers to a cloud server
 or a code hosting tool (in this case, GitHub, but there are others that exist)*
 
-<a name="committing"></a>
-### 4. Making Commits
+<a name="commit"></a>
+### 4. Making Commits (#commit)
 
-<a name="pulling"></a>
+<a name="pull"></a>
 ### 5. Pulling from Upstream 
-"Upstream" referes to the remote location thats hosting your code.
+Pulling is actually a compound operation. Essentially:
+
+**[pull](#pull) = [fetch](#fetch) + [merge](#merge)**
+
+But let's not get ahead of ourselves. 
+
+"Upstream" referes to the remote location that's hosting your code.
 In our case, "upstream" is either your forked repo, or my repo. 
 It depends on which one you ran `git clone` on. 
 You can set your upstream manually though.
@@ -113,7 +119,7 @@ git remote show origin
 ```
 
 You should see something like this if you've [forked](#fork) and [cloned](#clone) 
-your repo correctly. 
+your repo correctly:
 
 ```
 * remote origin
@@ -128,11 +134,111 @@ your repo correctly.
     main pushes to main (up to date)
 ```
 
-Pulling is actually a compound operation. Essentially:
+The main difference between this output and yours is your URL will be the URL
+location of *your* project. This (unsurprisingly) is true for any project that exists
+on your repo, and that you've "cloned" onto your local machine. 
 
-pull = fetch + merge
+#### Setting Upstream Location(s) 
+The following one-liner sets your upstream (of the branch you
+run this command in) to:
+1. Whatever repo "origin" is set to (which is a URL)
+2. Whatever branch is listed after the location (which is a branch in
+that repo)
 
-<a name="fetching"></a>
-#### Fetching
+```
+git set upstream origin main
+```
+
+I believe if you've cloned ***my*** repo, your "origin" is automatically set to the URL
+of ***my*** repo, which is 
+
+https://github.com/ScumbagScalawag/Git-Gud . 
+
+If you've cloned one of *your* repos, it will show the URL of your repo's homepage
+(i.e. where the README.md is displayed).
+
+##### Whats the point of Setting Upstream? 
+In a real-world production environment, you do all your work on local branches. 
+You ideally would never really touch the master branch. 
+
+To show this, take a look at [this repos](https://github.com/johannesjo/super-productivity) branches when
+I run `git remote show origin`. 
+
+```
+* remote origin
+  Fetch URL: https://github.com/johannesjo/super-productivity
+  Push  URL: https://github.com/johannesjo/super-productivity
+  HEAD branch: master
+  Remote branches:
+    JustAPhrog-pl-translation               tracked
+    bytrangle-feat_smart-date-parser        tracked
+    dependabot/npm_and_yarn/fs-extra-10.1.0 tracked
+    feat/all-task-list                      tracked
+    feat/android-backup                     tracked
+    feat/automerge                          tracked
+    feat/awesome-bar                        tracked
+    feat/blockstack                         tracked
+    feat/calendar                           tracked
+    feat/complexity-points                  tracked
+    feat/dexie                              tracked
+    feat/done-sound                         tracked
+    feat/dropbox                            tracked
+    feat/electron-service-worker            tracked
+    feat/focus-mode                         tracked
+    feat/global-metrics                     tracked
+    feat/gun                                tracked
+    feat/ical-timeline                      tracked
+    feat/new-db-layer                       tracked
+    feat/ng-13                              tracked
+    feat/open-project                       tracked
+    feat/re-style-task-list                 tracked
+    feat/remoteStorage                      tracked
+    feat/rxdb                               tracked
+    feat/solid                              tracked
+    feat/timeline                           tracked
+    feat/upgrade-ng10                       tracked
+    feat/watermelonDB                       tracked
+    feat/webdav                             tracked
+    master                                  tracked
+    test-github-actions                     tracked
+    test/git-actions                        tracked
+    thetric-build/angular-10-upgrade        tracked
+    upgrade-ng12                            tracked
+    v1-branch                               tracked
+  Local branch configured for 'git pull':
+    master merges with remote master
+  Local ref configured for 'git push':
+    master pushes to master (up to date)
+```
+
+If you are a developer who wants to contribute to this project, you would: 
+1. [Fork the repo](#fork)
+2. [Clone your forked repo](#clone)
+3. [Create a new branch](#branch) and navigate to it or navigate to the appropriate, 
+existing branch
+4. Make all your changes locally, [committing](#commit) along the way to "save"
+your progress (in the "git" sense of the word, that is). 
+
+Pause. Ok so you've done all your changes locally and your ready to share your code
+with the team. Nice. Grab some Tea. Good work. 
+Now, before you push your code, you'll need to make sure you account for anything
+that has changed since the commit that your changes diverged from the remote (origin).
+
+5. Account for changes in "origin master" (the remote location for your project):
+    1. Make sure you commit at this point. There's nuance as to when you might *not* want to commit
+    at this point, but, just... okay? 
+    2. Switch over to main: `git checkout main`
+    3. Pull(#pull) from 
+
+change in other-branch
+
+<a name="fetch"></a>
+#### Fetching 
+
+
+
+<a name="merge"></a>
+#### Merging 
+
 
 More soon. 
