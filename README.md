@@ -232,6 +232,8 @@ that has changed since the commit that your changes diverged from the remote (or
 
 change in other-branch
 
+Another change in other branch. Wow. You're really good at programming!
+
 <a name="fetch"></a>
 #### Fetching 
 
