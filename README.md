@@ -28,6 +28,7 @@ your local machine.**
 of being explicit as to when something is happening on a "remote" server, like GitHub, or on
 your computer. 
 
+<a name="top"></a>
 # How do I Contribute to Your project?
 I'm glad you asked. Here's a high-level overview (with links!): 
 
@@ -41,7 +42,7 @@ and deal with the GitHub side of things later.
 Pause. Ok so you've done all your changes locally and your ready to share your code
 with the team. Nice. Grab some Tea. Good work. 
 Now, before you push your code, you'll need to make sure you account for anything
-that has changed in **my** repo since you've started working. 
+that has changed in **my** remote repo since you've started working. 
 
 6. [Set your upstream location(s)](#upstream) 
     - [Method 1](#m1)
@@ -51,14 +52,16 @@ that has changed in **my** repo since you've started working.
     There's nuance as to when you might *not* want to commit at this point, but, just... okay? 
     2. Switch over to main: `git checkout main`
     3. [Pull](#pull) from origin: `git pull origin main` or `git pull upstream main`, depending on if you
-    used [Method 1](#m1) or [Method 2](#m2), respectively. 
-    4. [Merge](#merge) your changes to main. While you're in "main", run `git merge branch-with-new-features`.
-        1. You'll need to resolve these [merge conflicts](#merge-conflicts) locally. Get your featurs into main 
-        and make sure everything in main works with your new changes. 
+    used [Method 1](#m1) or [Method 2](#m2), respectively. [Resolve merge conflicts](#merge-conflicts).
+    4. [Merge](#merge) your changes to the new-and-improved main. 
+    While you're in "main", run `git merge branch-with-new-features`.
+        - You'll need to once again resolve *these* [merge conflicts](#merge-conflicts) locally. 
+        Get your featurs into main and make sure everything in main works with your new changes. 
 8. [Push](#push) these changes to ***your*** (forked) remote repo.
 
-Then comes the actual contribution to **my** project. Up to this point, you've been pulling stuff from 
-*my* repo and pushing to *your* repo. 
+Then comes the actual contribution to **my** project.
+Up to this point, you've been pulling stuff from *my* 
+repo and pushing to *your* repo. 
 
 9. [Create a **Pull Request**](#pr)
 10. Profit.
@@ -113,14 +116,16 @@ I'll add more on how you commit, leave commit messages, merge, and do Pull Reque
 I'm showing you all this stuff in a particular order.
 The Idea behind me setting you up on your local machines first, is so that you can now practice
 making local commits, local merges, and all that fun stuff in an environment that I can easily
-j
+incorporate into a project that exists outside of your local machine. 
+
 Essentially: welcome to your sandbox. Your sandbox will grow.  
 
-
 ## 3. To Upstream or Not to Upstream
-You can optionally do [step 6](#step-six) at this point. Continue with step 4 if you want to get started working right away
+You can optionally do [step 6](#step-six) at this point. 
+Continue with step 4 if you want to get started working locally right away
 and deal with the GitHub side of things later.
 
+<a name="step-four"></a>
 <a name="branch"></a>
 ## 4. Creating Branches
 Making a branch means you create a copy of the branch you're on. 
@@ -208,6 +213,7 @@ and the content in `branch-b` (on the bottom).
 Remember, `branch-a` is the branch you're in, and `branch-b` is the branch 
 whose content you want to include. New stuff is on the bottom. 
 
+<a name="step-six"></a>
 <a name="upstream"></a>
 ## 6. Setting Upstream Location(s) 
 TLDR: use either method:
@@ -311,6 +317,8 @@ upstream  https://github.com/ScumbagScalawag/Git-Gud (fetch)
 upstream  https://github.com/ScumbagScalawag/Git-Gud (push)
 ```
 
+If you've skipped steps 4 and 5, you should [return back to them now](#step-four).
+
 <a name="pull"></a>
 ## 7. Pulling from Upstream 
 Theoretically, you haven't touched the "main"
@@ -323,6 +331,37 @@ Pulling is actually a compound operation. Essentially:
 
 But let's not get ahead of ourselves. 
 
+<a name="fetch"></a>
+### Fetching 
+Fetch allows you to simply download the most up-to-date version of the project to 
+your local machine **without** merging it with the changes that you've made. 
+
+Fetch is totally safe and won't ever have conflicts with anything on your local
+machine.
+
+The following command downloads the latest version of the stuff in "origin". 
+
+```
+git fetch origin
+```
+
+This command would download the stuff in the "master" branch (only) from "origin".
+
+
+```
+git fetch origin master
+```
+
+**This command will put a new branch named `origin/master` in your local folder.**
+This branch can be checked out (`git checkout origin/master`) like any other
+branch. You can then review the most up-to-date version of the project in a safe 
+evironment that *doesn't* include the changes you've made. Once you're ready, you
+can then `git checkout branch-with-new-features` and `git merge origin/master`. 
+At that point, you'll find yourself in a familiar place. Congrats: you just did
+a pull, but manually. 
+
+Remember: [pull = fetch + merge](#pull)
+
 ### Whose Repo Is it Anyway? More on Upstream and Best Practices
 If you've cloned ***my*** repo, your "origin" is automatically set to the URL
 of ***my*** repo.
@@ -331,7 +370,8 @@ If you've [cloned](#clone) one of ***your*** repos, `git remote -v` will show th
 (i.e. where the README.md is displayed) for fetching and pushing. Makes sense. 
 
 #### Some Context: Working in Different Branches
-TLDR: Work in other branches -> merge to main.
+TLDR: Work in other branches -> merge to main -> send pull request -> repeat.
+*[skip this rant](#push)
 
 In a real-world production environment, you do all your work on local branches, pull from 
 the repo everyone else is sending their work to in order to get the most up-to-date codebase, 
@@ -397,11 +437,40 @@ location to be **my forked repo** (with [Method 1](#m1)) or add a new remote loc
 [Method 2](#m2)) and [send pull requests](#pr) to this person for them to potentially incorporate
 my changes.
 
-<a name="fetch"></a>
-## Fetching 
+<a name="push"></a>
+8. Pushing 
+*note: I usually [pull](#pull) from any location I push to just to be super sure I'm pushing
+changes that are up to date, even if I "know" I haven't changed anything*
+
+You'll be pushing to ***your** repo (that was forked from mine, in this case). 
+
+a. Run `git remote -v` to double-check that you've set your push location to *your* repo.
+
+**`git remote -v` for [method 1](#m1):**
+
+```
+origin  https://github.com/ScumbagScalawag/Git-Gud (fetch)
+origin  https://github.com/YourUsernameHere/Git-Gud (push)
+```
+
+**`git remote -v` for [method 2](#m2):**
+```
+origin  https://github.com/YourUsernameHere/Git-Gud (fetch)
+origin  https://github.com/YourUsernameHere/Git-Gud (push)
+upstream  https://github.com/ScumbagScalawag/Git-Gud (fetch)
+upstream  https://github.com/ScumbagScalawag/Git-Gud (push)
+```
+
+b. Now push your changes to your repo:
+
+```
+git push origin main
+```
+
+There you go! You should double-check on GitHub that your push went through. 
 
 <a name="pr"></a>
-## 10. Pull Requests - How Your Code is Added to My Code
+## 9. Pull Requests - How Your Code is Added to My Code
 **Why's it called a pull request?**
 It's called that becase it is a request by you (a contributor) to have me (the maintainer)
 pull your changes/additions/features into my project. 
@@ -422,4 +491,5 @@ Next, I (the repo maintainer) will either deny or accept these changes. This cou
 to work on some stuff locally before merging your repo into mine, or maybe I (the maintainer) 
 can edit your file manually on my end and immediately remedy the conflicts and merge.
 
-More soon. 
+Thanks for reading! I hope you learned something new. 
+Feel free to use the [top of this guide](#top) as a reference for the git workflow. 
