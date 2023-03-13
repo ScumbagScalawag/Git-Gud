@@ -265,11 +265,11 @@ will know to **pull** from my repo and **push** to yours.
 git remote set-url --pull origin https://github.com/ScumbagScalawag/Git-Gud
 ```
 
-This setup is nice in general becuase now you don't have to worry about calling *my* repo 
+This setup is nice in general because now you don't have to worry about calling *my* repo 
 something like "upstream": you can just say `git push origin main` and `git pull origin main`
 and all the legwork is setup to **pull** from my repo and **push** to yours. 
 
-Before we move on, lets make sure your've done this correctly. Run this command again:
+Before we move on, lets make sure you've done this correctly. Run this command again:
 
 ```
 git remote -v
@@ -323,7 +323,7 @@ If you've skipped steps 4 and 5, you should [return back to them now](#step-four
 <a name="pull"></a>
 ## 7. Pulling from Upstream 
 Theoretically, you haven't touched the "main"
-branch, so any conflicts that arrise from comparing your "main" branch with the remote ("origin main")
+branch, so any conflicts that arise from comparing your "main" branch with the remote ("origin main")
 should completely *exclude* your additional features. 
 
 Pulling is actually a compound operation. Essentially:
@@ -338,7 +338,7 @@ Go ahead and pull those changes from upstream.
 `git pull origin main` or `git pull upstream main`, depending on if you 
 used [Method 1](#m1) or [Method 2](#m2), respectively. 
 
-Youll need to [resolve any merge conflicts](#merge-conflicts) now. 
+You'll need to [resolve any merge conflicts](#merge-conflicts) now. 
 
 Now, [merge](#merge) the changes you've made on your feature branch with main 
 (while staying in main): `git merge branch-with-new-features`
@@ -372,7 +372,7 @@ git fetch origin master
 **This command will put a new branch named `origin/master` in your local folder.**
 This branch can be checked out (`git checkout origin/master`) like any other
 branch. You can then review the most up-to-date version of the project in a safe 
-evironment that *doesn't* include the changes you've made. 
+environment that *doesn't* include the changes you've made. 
 
 Once you're ready, you can then `git checkout branch-with-new-features` and `git merge origin/master`. 
 At that point, you'll find yourself in a familiar place. Congrats: you just did
@@ -452,7 +452,7 @@ at that location.
     master pushes to master (up to date)
 ```
 
-This setup is not managable, because I don't have permission to replace their code.
+This setup is not manageable, because I don't have permission to replace their code.
 Makes sense. To contribute to their project, I'll need to set *my* upstream push 
 location to be **my forked repo** (with [Method 1](#m1)) or add a new remote location (with
 [Method 2](#m2)) and [send pull requests](#pr) to this person for them to potentially incorporate
@@ -493,7 +493,7 @@ There you go! You should double-check on GitHub that your push went through.
 <a name="pr"></a>
 ## 9. Pull Requests - How Your Code is Added to My Code
 **Why's it called a pull request?**
-It's called that becase it is a request by you (a contributor) to have me (the maintainer)
+It's called that because it is a request by you (a contributor) to have me (the maintainer)
 pull your changes/additions/features into my project. 
 Remember: [pull = fetch + merge]. So by sending a pull request, you're asking me to download 
 (fetch) your changes, and merge them into my project. 
@@ -504,7 +504,7 @@ Make sure your feature branch was correctly merged into the main branch in its m
 current state with no errors or remaining merge conflicts locally before you initiate a PR. 
 
 This stage is where we might hop on a call or be active in chat to discuss your changes. 
-Sometimes PR's are trivial, but sometimes they requre deep discussion about what direction
+Sometimes PR's are trivial, but sometimes they require deep discussion about what direction
 the project is going, what needs work, what needs patches, and what features need to be added
 or removed. 
 
