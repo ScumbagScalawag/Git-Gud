@@ -6,9 +6,9 @@ Learning Git and GitHub with Noah and friends!
 You're going to fix all the errors in my commits that pertain to you.
 I can't seem to remember how to spell your guys' names...
 Here's my working list of participants:
-- Kris Ragband 
-- Cristana Hindenburg
-- Pedros Botina 
+1. Chris Ragland 👨‍💻 
+2. Cristana Hindenburg
+3. Pedros Botina 
 
 Fix (only) your name for me. Thanks. :)
 
@@ -95,7 +95,7 @@ git clone https://github.com/ScumbagScalawag/Git-Gud
 **You'll `git clone...` *your* repo!**
 
 This will put a `Git-Gud` folder in the place you run `git clone...`.
-That is, unless youu didn't re-name the project of your fork, in which case
+That is, unless you didn't re-name the project of your fork, in which case
 it would display that name. Makes sense.  
 
 If you want this project to be located in your `/home/yourlocalusername/Documents/coding-programming` folder, 
