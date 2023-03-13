@@ -9,12 +9,13 @@ Here's my working list of participants:
 1. Chris Ragland 👨‍💻 
 2. Cristana Hindenburg
 3. Pedros Botina 
+4. Murvan Oranzo
 
-Fix (only) your name for me. Thanks. :)
+Fix (only) your name for me. Thanks :)
 
-### 2. .gitignore
+### 2. `.gitignore`
 1. Create some super secret file that you don't want everyone on the team to see. 
-2. Add this file to your `.gitignore` file. 
+2. Add this file to your `.gitignore` file. (Create the file first: `touch .gitignore`)
 3. Use the information on this page get to the point of a [Pull Request](#pr)
 4. Sign off in the list below that you've finished Challenge 2: 
 
@@ -30,7 +31,7 @@ your computer.
 
 <a name="top"></a>
 # How do I Contribute to Your project?
-I'm glad you asked. Here's a high-level overview (with links!): 
+I'm glad you asked. Here's a high-level overview (with links!).
 
 1. [Fork the repo](#fork)
 2. [Clone your forked repo](#clone) (`git clone`)
@@ -217,14 +218,11 @@ whose content you want to include. New stuff is on the bottom.
 <a name="upstream"></a>
 ## 6. Setting Upstream Location(s) 
 TLDR: use either method:
-[Method 1](#m1): `git remote set-url --pull origin`
-[Method 2](#m2): `git remote add`
+- [Method 1](#m1): `git remote set-url --pull origin`
+- [Method 2](#m2): `git remote add`
 
 Before you get any funny ideas of pulling from and pushing to a remote repo, lets
-make sure you've got it set up correctly. 
-
-You should see something like this if you've [forked](#fork) and [cloned](#clone) 
-your repo as I've listed it in these instructions.
+make sure you'll be doing so from/to the right locations. Run this:
 
 ```
 git remote -v
@@ -239,7 +237,10 @@ origin  https://github.com/YourUsernameHere/Git-Gud (fetch)
 origin  https://github.com/YourUsernameHere/Git-Gud (push)
 ```
 
-*note: pull = fetch + merge, so just consider "fetch" to be the location
+You should see something like this if you've [forked](#fork) and [cloned](#clone) 
+your repo as I've listed it in these instructions.
+
+*note: pull = fetch + merge, so just consider "[fetch](#fetch)" to be the location
 your getting updates from. Your fork (for the sake of this project) remains unchanged.
 More on this [here](#pull)*
 
@@ -252,7 +253,7 @@ You don't need any special permissions to pull. You can pull all the livelong.
 There are two main ways I set upstream location(s). 
 
 <a name="m1"></a>
-##### Method 1 ("No thinky thinky" method)
+### Method 1 ("No thinky thinky" method)
 TLDR: `git remote set-url --pull origin`
 
 The following one-liner sets your "origin" **for pulling** to *my* repo, 
@@ -286,7 +287,7 @@ Notice how your pull/fetch URL has now changed. Nice.
 *more on fetch [here](#fetch).*
 
 <a name="m2"></a>
-##### Method 2 ("Ouch. Thinky hurt brain" method)
+### Method 2 ("Ouch. Thinky hurt brain" method)
 TLDR: `git remote add`
 
 If you'd like to keep a more finely-tuned arrangement of push and pull 
@@ -331,6 +332,22 @@ Pulling is actually a compound operation. Essentially:
 
 But let's not get ahead of ourselves. 
 
+Lets switch over to main: `git checkout main`
+
+Go ahead and pull those changes from upstream. 
+`git pull origin main` or `git pull upstream main`, depending on if you 
+used [Method 1](#m1) or [Method 2](#m2), respectively. 
+
+Youll need to [resolve any merge conflicts](#merge-conflicts) now. 
+
+Now, [merge](#merge) the changes you've made on your feature branch with main 
+(while staying in main): `git merge branch-with-new-features`
+
+You guessed it: [resolve those merge conflicts](#merge). 
+
+Boom. Now that you've done that, you should test out the code and make sure
+everything is working okay. 
+
 <a name="fetch"></a>
 ### Fetching 
 Fetch allows you to simply download the most up-to-date version of the project to 
@@ -355,12 +372,16 @@ git fetch origin master
 **This command will put a new branch named `origin/master` in your local folder.**
 This branch can be checked out (`git checkout origin/master`) like any other
 branch. You can then review the most up-to-date version of the project in a safe 
-evironment that *doesn't* include the changes you've made. Once you're ready, you
-can then `git checkout branch-with-new-features` and `git merge origin/master`. 
+evironment that *doesn't* include the changes you've made. 
+
+Once you're ready, you can then `git checkout branch-with-new-features` and `git merge origin/master`. 
 At that point, you'll find yourself in a familiar place. Congrats: you just did
 a pull, but manually. 
 
 Remember: [pull = fetch + merge](#pull)
+
+I think using fetch is better than pull in most cases, I'll leave it up to you
+as to whether or not you want to fetch + merge, or just pull. 
 
 ### Whose Repo Is it Anyway? More on Upstream and Best Practices
 If you've cloned ***my*** repo, your "origin" is automatically set to the URL
