@@ -8,7 +8,7 @@ I can't seem to remember how to spell your guys' names...
 Here's my working list of participants:
 1. Chris Ragland 👨‍💻 
 2. Cristana Hindenburg
-3. Pedros Botina 
+3. Pedro Bautista
 4. Murvan Oranzo
 
 Fix (only) your name for me. Thanks :)
