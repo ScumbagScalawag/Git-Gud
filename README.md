@@ -7,8 +7,8 @@ You're going to fix all the errors in my commits that pertain to you.
 I can't seem to remember how to spell your guys' names...
 Here's my working list of participants:
 1. Chris Ragland 👨‍💻
-3. Pedro Bautista
 2. Christiana Hellenbrand :)
+3. Pedro Bautista
 4. Murvan Oranzo
 
 Fix (only) your name for me. Thanks :)
