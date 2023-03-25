@@ -6,9 +6,9 @@ Learning Git and GitHub with Noah and friends!
 You're going to fix all the errors in my commits that pertain to you.
 I can't seem to remember how to spell your guys' names...
 Here's my working list of participants:
-1. Chris Ragland 👨‍💻 
+1. Chris Ragland 👨‍💻
 2. Christiana Hellenbrand :)
-3. Pedros Botina 
+3. Pedro Bautista
 4. Murvan Oranzo
 
 Fix (only) your name for me. Thanks :)
@@ -513,6 +513,4 @@ to work on some stuff locally before merging your repo into mine, or maybe I (th
 can edit your file manually on my end and immediately remedy the conflicts and merge.
 
 Thanks for reading! I hope you learned something new. 
-Feel free to use the [top of this guide](#top) as a reference for the git workflow. 
-Blah.
-
+Feel free to use the [top of this guide](#top) as a reference for the git workflow.
