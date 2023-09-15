@@ -14,13 +14,9 @@ Here's my working list of participants:
 
 Fix (only) your name for me. Thanks :)
 
-### 2. `.gitignore`
-1. Create some super secret file that you don't want everyone on the team to see. 
-2. Add this file to your `.gitignore` file. (Create the file first: `touch .gitignore`)
-3. Use the information on this page get to the point of a [Pull Request](#pr)
-4. Sign off in the list below that you've finished Challenge 2: 
-
-- 
+### `.gitignore`
+1. `.gitignore` is a super secret file that lists the relative paths of all files in the project you don't want to share with others.
+2. As practice, you might want to try creating a file and adding it to the `.gitignore` to make sure is is ignored and not able to be added to your staging area (with `git add filename.txt`, for example)
 
 ### Some Nuances as You Read
 - The terms "master" and "main" are used synonymously to refer to the primary branch
