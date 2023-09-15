@@ -5,6 +5,7 @@ Learning Git and GitHub with Noah and friends!
 ### 1. Basics:
 You're going to fix all the errors in my commits that pertain to you.
 I can't seem to remember how to spell your guys' names...
+If you'd like to participate and you're name is not there, no worries: do a PR to add it! 
 Here's my working list of participants:
 1. Chris Ragland 👨‍💻
 2. Christiana Hellenbrand :)
